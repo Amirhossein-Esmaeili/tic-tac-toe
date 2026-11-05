@@ -10,6 +10,85 @@ Codes checks at all rows, columns and diagonals if a player attempts to place a 
 
 In terms of architecture, all the source code is inside a single script file, named `tic-tac-toe.py`. It uses separate functions—`draw_menu`, `draw_board`, `check_win` and `check_buttons`. It also has simple UI features, such as a button hover effect, a new rounds button and a back-to-menu button.
 
+##  Structure
+
+The project is written in a single Python file called `tic-tac-toe.py`. I didn't split the menu, board and other parts into different files. Instead, I used functions to handle each part separately.
+
+There are a few main parts that work together to make the game run:
+
+### Main Components
+
+| Component | Description |
+| ------------ | ------------------------------------------------------------ |
+| Game Window | The main window where everything is displayed. It contains the menu, game board, buttons and other game information. |
+| Main Menu | The first screen players see. They can enter their names and start a new game from here. |
+| Game Board | The 3×3 board where both players place their marks during the game. |
+| Player Names | Stores the names entered by the players and uses them when showing turns and game results. |
+| Input System | Handles mouse clicks and keyboard inputs, including selecting cells and typing player names. |
+| Game State | Keeps track of which screen is currently active, such as the main menu or the game itself. |
+| Game Result | Handles the result after a round ends and displays the winner's name or a draw message. |
+| Buttons | Used for different actions, including starting a game, restarting it and returning to the menu. |
+
+### Main Functions
+
+I used different functions so the code for drawing the screens and checking the game doesn't all get mixed together. These are some of the main functions:
+
+| Function | Description |
+| ---------------- | ------------------------------------------------ |
+| `draw_text()` | Displays text on the game window. It is used for player names, messages and other information. |
+| `draw_button()` | Draws the buttons and changes their colors when the mouse moves over them. |
+| `draw_menu()` | Draws the main menu, including the name fields and the start button. |
+| `draw_board()` | Displays the 3×3 board, player marks and information about the current game. |
+| `check_winner()` | Checks all rows, columns and diagonals to see if a player has won. |
+| `reset_game()` | Clears the board and resets the game information for another round. |
+
+### Important Variables
+
+These are some variables used to keep track of the players, board and current game state.
+
+| Variable | Description |
+| ---------------- | ------------------------------------------ |
+| `game_state` | Stores the current screen, such as the menu or game screen. |
+| `player1` | Contains the first player's name. |
+| `player2` | Contains the second player's name. |
+| `current_player` | Keeps track of whose turn it is. |
+| `winner` | Stores the mark of the player who wins the game. |
+| `game_over` | Indicates whether the current round has finished. |
+| `board` | Stores the marks placed in the 9 cells. |
+| `active_input` | Keeps track of which name field is currently selected. |
+| `name1` | Stores the text entered in the first name field. |
+| `name2` | Stores the text entered in the second name field. |
+
+### Game Flow
+
+This is how a normal round works, starting from opening the game and ending with a new round.
+
+| Step | What Happens |
+| -------------- | ------------------------------------------------ |
+| 1. Start | Pygame opens the game window. |
+| 2. Main Menu | Both players enter their names before playing. |
+| 3. Start Game | The board is cleared and Player X gets the first turn. |
+| 4. Player Move | The current player clicks on an empty cell to place a mark. |
+| 5. Check Result | The game checks if someone has won or if the board is full. |
+| 6. Next Turn | When the game is not over, the other player gets their turn. |
+| 7. Game End | The winner or draw message appears on the screen. |
+| 8. Restart | The board is cleared and another round can begin. |
+
+### Screen Design
+
+I used a dark background for the game and added some visual details to make the different screens look better. The board and buttons also have rounded corners instead of simple square shapes.
+
+| Element | Description |
+| -------------- | ------------------------------------------ |
+| Window Size | 700 × 750 pixels. |
+| Background | Dark background with decorative circles. |
+| Main Panel | Rounded panel used in the main menu. |
+| Player X | Blue color. |
+| Player O | Purple color. |
+| Game Board | A 3×3 board with rounded cells. |
+| Buttons | Rounded buttons with hover effects. |
+| Status Message | Displays the current turn or the final game result. |
+
 ## Features
 
 Here are some of the things I added to the game:
@@ -92,84 +171,6 @@ The game follows the usual Tic Tac Toe rules. Both players take turns and try to
 - Getting three marks in the same row, column or diagonal means that player wins.
 - If all 9 cells are filled and neither player has won, the game ends in a draw.
 
-##  Structure
-
-The project is written in a single Python file called `tic-tac-toe.py`. I didn't split the menu, board and other parts into different files. Instead, I used functions to handle each part separately.
-
-There are a few main parts that work together to make the game run:
-
-### Main Components
-
-| Component | Description |
-| ------------ | ------------------------------------------------------------ |
-| Game Window | The main window where everything is displayed. It contains the menu, game board, buttons and other game information. |
-| Main Menu | The first screen players see. They can enter their names and start a new game from here. |
-| Game Board | The 3×3 board where both players place their marks during the game. |
-| Player Names | Stores the names entered by the players and uses them when showing turns and game results. |
-| Input System | Handles mouse clicks and keyboard inputs, including selecting cells and typing player names. |
-| Game State | Keeps track of which screen is currently active, such as the main menu or the game itself. |
-| Game Result | Handles the result after a round ends and displays the winner's name or a draw message. |
-| Buttons | Used for different actions, including starting a game, restarting it and returning to the menu. |
-
-### Main Functions
-
-I used different functions so the code for drawing the screens and checking the game doesn't all get mixed together. These are some of the main functions:
-
-| Function | Description |
-| ---------------- | ------------------------------------------------ |
-| `draw_text()` | Displays text on the game window. It is used for player names, messages and other information. |
-| `draw_button()` | Draws the buttons and changes their colors when the mouse moves over them. |
-| `draw_menu()` | Draws the main menu, including the name fields and the start button. |
-| `draw_board()` | Displays the 3×3 board, player marks and information about the current game. |
-| `check_winner()` | Checks all rows, columns and diagonals to see if a player has won. |
-| `reset_game()` | Clears the board and resets the game information for another round. |
-
-### Important Variables
-
-These are some variables used to keep track of the players, board and current game state.
-
-| Variable | Description |
-| ---------------- | ------------------------------------------ |
-| `game_state` | Stores the current screen, such as the menu or game screen. |
-| `player1` | Contains the first player's name. |
-| `player2` | Contains the second player's name. |
-| `current_player` | Keeps track of whose turn it is. |
-| `winner` | Stores the mark of the player who wins the game. |
-| `game_over` | Indicates whether the current round has finished. |
-| `board` | Stores the marks placed in the 9 cells. |
-| `active_input` | Keeps track of which name field is currently selected. |
-| `name1` | Stores the text entered in the first name field. |
-| `name2` | Stores the text entered in the second name field. |
-
-### Game Flow
-
-This is how a normal round works, starting from opening the game and ending with a new round.
-
-| Step | What Happens |
-| -------------- | ------------------------------------------------ |
-| 1. Start | Pygame opens the game window. |
-| 2. Main Menu | Both players enter their names before playing. |
-| 3. Start Game | The board is cleared and Player X gets the first turn. |
-| 4. Player Move | The current player clicks on an empty cell to place a mark. |
-| 5. Check Result | The game checks if someone has won or if the board is full. |
-| 6. Next Turn | When the game is not over, the other player gets their turn. |
-| 7. Game End | The winner or draw message appears on the screen. |
-| 8. Restart | The board is cleared and another round can begin. |
-
-### Screen Design
-
-I used a dark background for the game and added some visual details to make the different screens look better. The board and buttons also have rounded corners instead of simple square shapes.
-
-| Element | Description |
-| -------------- | ------------------------------------------ |
-| Window Size | 700 × 750 pixels. |
-| Background | Dark background with decorative circles. |
-| Main Panel | Rounded panel used in the main menu. |
-| Player X | Blue color. |
-| Player O | Purple color. |
-| Game Board | A 3×3 board with rounded cells. |
-| Buttons | Rounded buttons with hover effects. |
-| Status Message | Displays the current turn or the final game result. |
 
 ## Built With
 
